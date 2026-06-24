@@ -28,13 +28,11 @@ Open the final notebook:
 notebooks/final_notebook.ipynb
 ```
 
-Colab link placeholder:
+Colab link:
 
 ```text
-https://colab.research.google.com/github/<github-owner>/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook.ipynb
+https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook.ipynb
 ```
-
-Replace `<github-owner>` after the private GitHub repository is created.
 
 ## Methods
 

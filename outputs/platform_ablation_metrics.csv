@@ -1,0 +1,2 @@
+model,training_cv_auc_with_mean,training_cv_auc_without_mean,training_cv_paired_delta_mean,training_cv_paired_delta_sd,holdout_auc_with,holdout_auc_without,holdout_auc_delta,holdout_delta_ci_low,holdout_delta_ci_high,practical_threshold,conclusion
+RandomForest_flexible,0.8585653400867754,0.8551726568256373,0.003392683261138152,0.004230420320148563,0.8686714074074073,0.8571970370370371,0.011474370370370246,0.003933364609566631,0.01964948475677782,0.01,mixed evidence: holdout and training CV do not agree on practical magnitude

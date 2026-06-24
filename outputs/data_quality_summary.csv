@@ -1,0 +1,10 @@
+check,value,expected,passed
+duplicate_game_id,0,0,True
+duplicate_title_casefold,0,0,True
+invalid_release_date,0,0,True
+release_year_date_mismatch,0,0,True
+platform_count_token_mismatch,0,0,True
+is_multi_platform_mismatch,0,0,True
+negative_count_values,0,0,True
+user_rating_outside_1_to_5,0,0,True
+metacritic_outside_0_to_100,0,0,True

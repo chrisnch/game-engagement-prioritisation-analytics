@@ -1,0 +1,7 @@
+.DS_Store
+.venv/
+.ipynb_checkpoints/
+.matplotlib_cache/
+__pycache__/
+*.py[cod]
+*.log

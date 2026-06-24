@@ -1,0 +1,25 @@
+check,status,details
+Dataset loaded,PASS,"15,000 rows, 43 source columns"
+Cleaned row retention,PASS,"15,000 rows; no analytical row deletion"
+Schema mapped once,PASS,43 of 43 source fields mapped
+Target binary,PASS,high_engagement contains only 0/1
+Holdout split integrity,PASS,No train/holdout index overlap
+CV split integrity,PASS,All five folds are disjoint from holdout
+Leakage exclusions,PASS,Target-derived/status fields excluded
+Training-only text audit,PASS,Exploratory TF-IDF fitted on training rows
+Strict chronology,PASS,2021-07-21 < 2021-07-22
+Model comparison coverage,PASS,Three feature sets × four estimators
+CV business metrics complete,PASS,"Top-20% precision, lift and capture recorded for every model"
+Deterministic top-k policy,PASS,Seeded hash tie-break is reproducible
+Metrics and tables saved,PASS,13 report tables found
+Figures saved,PASS,9 report figures found
+Critical tables populated,PASS,All report-facing tables contain rows
+Ranking output aliases agree,PASS,Canonical ranking table matches legacy alias
+Random seed fixed,PASS,RANDOM_STATE = 42
+Final feature list saved,PASS,15 final raw inputs documented
+Claim matrix complete,PASS,6 evidence-linked recommendations
+Target sensitivity complete,PASS,"Top-20%, top-25% and top-30% training-defined targets evaluated"
+Stage-matched heuristics,PASS,Only stage-matched screening variables used in simple rules
+Top-20% capacity fixed,PASS,600 of 3000 holdout games reviewed
+Error examples complete,PASS,Both commercially relevant error types represented
+Decision strategies complete,PASS,"Random, heuristic and ML queues compared at equal capacity"

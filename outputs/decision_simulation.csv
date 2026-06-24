@@ -1,0 +1,4 @@
+review_strategy,games_reviewed,high_engagement_games_found,additional_found_vs_random,false_review_burden,missed_high_engagement_games,business_interpretation
+Random expected screening,600,150.0,0.0,450.0,600.0,Expected baseline with no prioritisation.
+Training-selected simple heuristic,600,331.0,181.0,269.0,419.0,Simple stage-matched rule selected on training data: Franchise depth.
+Final ML model,600,413.0,263.0,187.0,337.0,Model-supported queue for human comparable-game review.

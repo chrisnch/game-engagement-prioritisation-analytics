@@ -1,0 +1,2 @@
+model,train_end_date,test_start_date,train_rows,test_rows,train_positive_rate,test_positive_rate,roc_auc,pr_auc,f1,balanced_accuracy
+RandomForest_flexible,2021-07-21,2021-07-22,11999,3001,0.23910325860488374,0.29423525491502833,0.6855834207574187,0.5050370195666332,0.40344580043072503,0.6050562134195704

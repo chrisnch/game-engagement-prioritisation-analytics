@@ -2,6 +2,8 @@
 
 An evidence-led product analytics notebook for prioritising high-engagement comparable games under limited analyst capacity. The project uses observable game metadata to help an indie or AA studio decide which titles deserve deeper human review before product positioning, platform, and marketing decisions.
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook.ipynb)
+
 ## Key Result
 
 In a fixed 600-game review queue, random screening would identify about 150 high-engagement games. The final machine-learning screening model identifies 413, making it useful as a prioritisation aid rather than an automatic success predictor.
@@ -26,12 +28,6 @@ Open the final notebook:
 
 ```text
 notebooks/final_notebook.ipynb
-```
-
-Colab link:
-
-```text
-https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook.ipynb
 ```
 
 ## Methods

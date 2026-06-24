@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game Engagement Prioritisation Analytics</title>
+  <meta name="description" content="Bilingual report for a game engagement prioritisation analytics project.">
+  <style>
+    :root {
+      --paper: #F5F0E8;
+      --accent: #CC785C;
+      --accent-strong: #D97757;
+      --ink: #191919;
+      --line: color-mix(in srgb, var(--ink) 18%, transparent);
+      --muted: color-mix(in srgb, var(--ink) 64%, var(--paper));
+      --panel: color-mix(in srgb, white 54%, var(--paper));
+      --panel-strong: color-mix(in srgb, white 74%, var(--paper));
+      --shadow: 0 22px 60px rgba(25, 25, 25, 0.08);
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: var(--accent);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    button,
+    .button {
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      background: var(--ink);
+      color: var(--paper);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+    }
+
+    button.secondary,
+    .button.secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      z-index: 10;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--paper) 86%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: grid;
+      gap: 0.05rem;
+    }
+
+    .brand strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1rem, 2vw, 1.28rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.25;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .lang-toggle {
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: color-mix(in srgb, white 42%, var(--paper));
+      padding: 0.2rem;
+    }
+
+    .lang-toggle button {
+      min-height: 44px;
+      border: 0;
+      border-radius: 999px;
+      padding: 0.45rem 0.75rem;
+      background: transparent;
+      color: var(--ink);
+      font-size: 0.9rem;
+    }
+
+    .lang-toggle button[aria-pressed="true"] {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .hero {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: clamp(3.5rem, 9vw, 7.5rem) 0 clamp(2rem, 5vw, 4rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: end;
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.04;
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 920px;
+      font-size: clamp(2.7rem, 6vw, 5.4rem);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4.5vw, 4.4rem);
+    }
+
+    h3 {
+      font-size: clamp(1.25rem, 2vw, 1.75rem);
+    }
+
+    p {
+      margin: 0;
+      text-wrap: pretty;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin-top: 1.4rem;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+      line-height: 1.58;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .hero-aside {
+      border-top: 2px solid var(--ink);
+      padding-top: 1.2rem;
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .hero-aside .number {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      line-height: 0.9;
+      color: var(--accent-strong);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .hero-aside .caption {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .band {
+      border-top: 1px solid var(--line);
+      padding: clamp(3rem, 7vw, 6rem) 0;
+    }
+
+    .band.contrast {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .band-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.8fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      margin-bottom: clamp(1.8rem, 4vw, 3rem);
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+    }
+
+    .contrast .section-head p,
+    .contrast .muted {
+      color: color-mix(in srgb, var(--paper) 72%, var(--accent));
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .metric {
+      min-height: 170px;
+      padding: clamp(1rem, 2vw, 1.4rem);
+      background: var(--panel-strong);
+      display: grid;
+      align-content: space-between;
+      gap: 1rem;
+    }
+
+    .metric strong {
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      line-height: 0.95;
+      color: var(--accent-strong);
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .kanban {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .lane {
+      background: var(--panel);
+      min-height: 320px;
+      padding: clamp(1rem, 2vw, 1.25rem);
+      display: grid;
+      align-content: start;
+      gap: 1rem;
+    }
+
+    .lane-label {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .lane-label span {
+      color: var(--accent);
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .lane ul {
+      margin: 0;
+      padding-left: 1rem;
+      color: var(--muted);
+    }
+
+    .lane li + li {
+      margin-top: 0.45rem;
+    }
+
+    .figure-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .figure-panel {
+      background: var(--panel-strong);
+      padding: clamp(1rem, 2vw, 1.25rem);
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .figure-panel.wide {
+      grid-column: 1 / -1;
+    }
+
+    .figure-panel img {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .figure-panel figcaption {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .recommendation {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: start;
+    }
+
+    .rule-list {
+      display: grid;
+      gap: 1px;
+      background: color-mix(in srgb, var(--paper) 24%, transparent);
+      border: 1px solid color-mix(in srgb, var(--paper) 24%, transparent);
+    }
+
+    .rule {
+      padding: 1.2rem;
+      background: color-mix(in srgb, var(--paper) 8%, transparent);
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .rule strong {
+      color: var(--accent);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .rule p {
+      color: color-mix(in srgb, var(--paper) 82%, var(--accent));
+    }
+
+    .link-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 0;
+    }
+
+    .footer .band-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    [data-lang] {
+      display: none;
+    }
+
+    html[lang="en"] [data-lang="en"],
+    html[lang="zh-CN"] [data-lang="zh-CN"] {
+      display: revert;
+    }
+
+    html[lang="zh-CN"] body {
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    html[lang="zh-CN"] h1,
+    html[lang="zh-CN"] h2,
+    html[lang="zh-CN"] h3,
+    html[lang="zh-CN"] .brand strong {
+      font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+      line-height: 1.12;
+    }
+
+    @media (max-width: 900px) {
+      .topbar-inner {
+        align-items: start;
+        flex-direction: column;
+        padding: 0.8rem 0;
+      }
+
+      .controls {
+        justify-content: start;
+      }
+
+      .hero,
+      .section-head,
+      .recommendation {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics,
+      .kanban,
+      .figure-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .metrics,
+      .kanban,
+      .figure-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .figure-panel.wide {
+        grid-column: auto;
+      }
+
+      .hero-actions,
+      .link-strip {
+        flex-direction: column;
+      }
+
+      .hero-aside {
+        display: none;
+      }
+
+      .hero-actions .button,
+      .link-strip .button {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: clamp(2.45rem, 12vw, 3.35rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to report</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" aria-label="Project title">
+        <strong data-lang="en">Game Engagement Prioritisation</strong>
+        <strong data-lang="zh-CN">游戏参与度优先级分析</strong>
+        <span data-lang="en">Notebook-led analytics report</span>
+        <span data-lang="zh-CN">以 notebook 为核心的分析报告</span>
+      </div>
+      <div class="controls">
+        <nav class="lang-toggle" aria-label="Language">
+          <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-set-lang="zh-CN" aria-pressed="false">简体中文</button>
+        </nav>
+        <a class="button secondary" href="https://github.com/chrisnch/game-engagement-prioritisation-analytics">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow" data-lang="en">Product analytics · human-in-the-loop screening</p>
+        <p class="eyebrow" data-lang="zh-CN">产品分析 · 人机协同筛选</p>
+        <h1 id="hero-title" data-lang="en">Which games should analysts review first?</h1>
+        <h1 id="hero-title-zh" data-lang="zh-CN">分析师应该先研究哪些游戏？</h1>
+        <p class="lead" data-lang="en">
+          This project ranks comparable games for scarce analyst review time. It uses observable metadata to identify high-engagement candidates, then keeps final product judgement with humans.
+        </p>
+        <p class="lead" data-lang="zh-CN">
+          本项目为有限的竞品研究时间生成审核优先级。它使用可观察元数据识别高参与度候选游戏，但最终产品判断仍由人完成。
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook.ipynb">Open in Colab</a>
+          <a class="button secondary" href="README.md" data-lang="en">Read README</a>
+          <a class="button secondary" href="README.zh-CN.md" data-lang="zh-CN">阅读中文 README</a>
+        </div>
+      </div>
+      <aside class="hero-aside" aria-label="Main result">
+        <div>
+          <div class="number">413</div>
+          <p class="caption" data-lang="en">high-engagement games found in a 600-game model-prioritised review queue</p>
+          <p class="caption" data-lang="zh-CN">在 600 款模型优先审核队列中找到的高参与度游戏数</p>
+        </div>
+        <p class="muted" data-lang="en">
+          Random screening would find about 150. The final model finds 263 more useful review candidates.
+        </p>
+        <p class="muted" data-lang="zh-CN">
+          随机筛选预计只能找到约 150 款。最终模型多找到 263 款值得人工研究的候选游戏。
+        </p>
+      </aside>
+    </section>
+
+    <section class="band" aria-labelledby="snapshot-heading">
+      <div class="band-inner">
+        <div class="section-head">
+          <h2 id="snapshot-heading" data-lang="en">Project Snapshot</h2>
+          <h2 id="snapshot-heading-zh" data-lang="zh-CN">项目速览</h2>
+          <p data-lang="en">
+            The analysis is deliberately framed as review prioritisation. It does not claim to predict commercial success or prove that features cause engagement.
+          </p>
+          <p data-lang="zh-CN">
+            本分析明确定位为审核优先级工具。它不声称预测商业成功，也不证明某些特征会导致参与度提升。
+          </p>
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <strong>15k</strong>
+            <span data-lang="en">games in the supplied market snapshot</span>
+            <span data-lang="zh-CN">数据快照中的游戏数量</span>
+          </div>
+          <div class="metric">
+            <strong>43</strong>
+            <span data-lang="en">source fields audited and mapped</span>
+            <span data-lang="zh-CN">已审计并映射的源字段</span>
+          </div>
+          <div class="metric">
+            <strong>0.869</strong>
+            <span data-lang="en">holdout ROC-AUC for the final model</span>
+            <span data-lang="zh-CN">最终模型留出集 ROC-AUC</span>
+          </div>
+          <div class="metric">
+            <strong>2.75x</strong>
+            <span data-lang="en">lift in the top 20% review queue</span>
+            <span data-lang="zh-CN">预测前 20% 审核队列提升</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" aria-labelledby="workflow-heading">
+      <div class="band-inner">
+        <div class="section-head">
+          <h2 id="workflow-heading" data-lang="en">Kanban View</h2>
+          <h2 id="workflow-heading-zh" data-lang="zh-CN">看板视角</h2>
+          <p data-lang="en">
+            The project moves from data trust to decision value. Each stage leaves auditable tables or figures in the repository.
+          </p>
+          <p data-lang="zh-CN">
+            项目从数据可信度推进到决策价值。每个阶段都在仓库中留下可审计的表格或图表。
+          </p>
+        </div>
+        <div class="kanban">
+          <article class="lane">
+            <div class="lane-label">
+              <h3 data-lang="en">Audit</h3>
+              <h3 data-lang="zh-CN">审计</h3>
+              <span>01</span>
+            </div>
+            <ul data-lang="en">
+              <li>Load 15,000 games and 43 fields.</li>
+              <li>Check schema, duplicates, placeholders and row retention.</li>
+              <li>Document the opaque engagement target boundary.</li>
+            </ul>
+            <ul data-lang="zh-CN">
+              <li>载入 15,000 款游戏和 43 个字段。</li>
+              <li>检查 schema、重复项、占位符和行保留。</li>
+              <li>说明 engagement target 的不透明边界。</li>
+            </ul>
+          </article>
+          <article class="lane">
+            <div class="lane-label">
+              <h3 data-lang="en">Define</h3>
+              <h3 data-lang="zh-CN">定义</h3>
+              <span>02</span>
+            </div>
+            <ul data-lang="en">
+              <li>Convert `engagement_score` into a top-quartile screening target.</li>
+              <li>Separate descriptive evidence from modelling evidence.</li>
+              <li>Keep prediction separate from causal interpretation.</li>
+            </ul>
+            <ul data-lang="zh-CN">
+              <li>将 `engagement_score` 转换为前 25% 筛选目标。</li>
+              <li>区分描述性证据和建模证据。</li>
+              <li>将预测关系与因果解释分开。</li>
+            </ul>
+          </article>
+          <article class="lane">
+            <div class="lane-label">
+              <h3 data-lang="en">Model</h3>
+              <h3 data-lang="zh-CN">建模</h3>
+              <span>03</span>
+            </div>
+            <ul data-lang="en">
+              <li>Compare heuristics and ML models using review-queue lift.</li>
+              <li>Use leakage-controlled preprocessing pipelines.</li>
+              <li>Lock the selected model on a 3,000-game holdout set.</li>
+            </ul>
+            <ul data-lang="zh-CN">
+              <li>用审核队列 lift 比较启发式规则和机器学习模型。</li>
+              <li>使用控制泄漏的预处理管道。</li>
+              <li>在 3,000 款游戏留出集上锁定最终模型。</li>
+            </ul>
+          </article>
+          <article class="lane">
+            <div class="lane-label">
+              <h3 data-lang="en">Recommend</h3>
+              <h3 data-lang="zh-CN">建议</h3>
+              <span>04</span>
+            </div>
+            <ul data-lang="en">
+              <li>Prioritise the top-scored games for analyst review.</li>
+              <li>Use SHAP and feature importance as evidence prompts.</li>
+              <li>Keep human judgement in the final product decision.</li>
+            </ul>
+            <ul data-lang="zh-CN">
+              <li>优先人工研究模型评分最高的游戏。</li>
+              <li>把 SHAP 和特征重要性用作证据提示。</li>
+              <li>最终产品决策仍保留人工判断。</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" aria-labelledby="evidence-heading">
+      <div class="band-inner">
+        <div class="section-head">
+          <h2 id="evidence-heading" data-lang="en">Visual Evidence</h2>
+          <h2 id="evidence-heading-zh" data-lang="zh-CN">关键可视化</h2>
+          <p data-lang="en">
+            The charts show why the project is useful as a prioritisation system: it captures more high-engagement games in the same analyst queue.
+          </p>
+          <p data-lang="zh-CN">
+            这些图表展示项目为何适合做优先级系统：在同样的人工审核容量下，它能捕捉更多高参与度游戏。
+          </p>
+        </div>
+        <div class="figure-grid">
+          <figure class="figure-panel wide">
+            <img src="figures/decision_simulation_bar_chart.png" alt="Decision simulation bar chart">
+            <figcaption data-lang="en">Decision simulation: the final ML model finds 413 high-engagement games in a 600-game review queue, compared with 150 for random screening.</figcaption>
+            <figcaption data-lang="zh-CN">决策模拟：在 600 款审核队列中，最终机器学习模型找到 413 款高参与度游戏，随机筛选约为 150 款。</figcaption>
+          </figure>
+          <figure class="figure-panel">
+            <img src="figures/review_queue_outcomes.png" alt="Review queue outcomes by priority band">
+            <figcaption data-lang="en">Review-queue outcomes convert model performance into an analyst-capacity decision.</figcaption>
+            <figcaption data-lang="zh-CN">审核队列结果将模型表现转化为分析师容量决策。</figcaption>
+          </figure>
+          <figure class="figure-panel">
+            <img src="figures/heuristic_vs_ml_lift.png" alt="Heuristic versus machine learning lift">
+            <figcaption data-lang="en">The ML model improves on the training-selected heuristic while keeping the heuristic as a useful benchmark.</figcaption>
+            <figcaption data-lang="zh-CN">机器学习模型优于训练阶段选出的启发式规则，同时保留该规则作为有用基准。</figcaption>
+          </figure>
+          <figure class="figure-panel">
+            <img src="figures/feature_importance.png" alt="Feature importance chart">
+            <figcaption data-lang="en">Feature importance identifies which observable signals drive the ranking, without treating them as causal proof.</figcaption>
+            <figcaption data-lang="zh-CN">特征重要性说明哪些可观察信号推动排序，但不把它们当作因果证明。</figcaption>
+          </figure>
+          <figure class="figure-panel">
+            <img src="figures/shap_summary.png" alt="SHAP summary chart">
+            <figcaption data-lang="en">SHAP adds direction and distribution context for business-facing interpretation.</figcaption>
+            <figcaption data-lang="zh-CN">SHAP 为面向业务的解释补充方向和分布语境。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="band contrast" aria-labelledby="recommendation-heading">
+      <div class="band-inner">
+        <div class="recommendation">
+          <div>
+            <p class="eyebrow" data-lang="en">Business recommendation</p>
+            <p class="eyebrow" data-lang="zh-CN">业务建议</p>
+            <h2 id="recommendation-heading" data-lang="en">Use the model as a queue, not a verdict.</h2>
+            <h2 id="recommendation-heading-zh" data-lang="zh-CN">把模型当作队列，不要当作裁决。</h2>
+            <p class="lead" data-lang="en">
+              The model is valuable because it focuses human review. It should shortlist games for deeper research, challenge assumptions about platform and design signals, and expose cases where analyst judgement is still required.
+            </p>
+            <p class="lead" data-lang="zh-CN">
+              模型的价值在于聚焦人工研究。它应该用于生成深入分析的候选清单、挑战对平台和设计信号的直觉判断，并指出仍需人工判断的案例。
+            </p>
+            <div class="link-strip">
+              <a class="button" href="notebooks/final_notebook.ipynb">Notebook</a>
+              <a class="button secondary" href="report/final_business_report.pdf">PDF report</a>
+              <a class="button secondary" href="outputs/decision_simulation.csv">Decision table</a>
+            </div>
+          </div>
+          <div class="rule-list">
+            <article class="rule">
+              <strong data-lang="en">Use for</strong>
+              <strong data-lang="zh-CN">适合用于</strong>
+              <p data-lang="en">Comparable-game review prioritisation, evidence prompts, and capacity planning.</p>
+              <p data-lang="zh-CN">竞品研究优先级、证据提示和审核容量规划。</p>
+            </article>
+            <article class="rule">
+              <strong data-lang="en">Do not use for</strong>
+              <strong data-lang="zh-CN">不适合用于</strong>
+              <p data-lang="en">Revenue forecasting, causal claims, automatic portfolio decisions or replacing playtesting.</p>
+              <p data-lang="zh-CN">收入预测、因果结论、自动产品组合决策或替代 playtesting。</p>
+            </article>
+            <article class="rule">
+              <strong data-lang="en">Main limitation</strong>
+              <strong data-lang="zh-CN">主要限制</strong>
+              <p data-lang="en">The supplied engagement score is opaque, so the analysis treats it as a screening proxy.</p>
+              <p data-lang="zh-CN">数据中的 engagement score 公式不透明，因此分析只将其作为筛选代理指标。</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="band-inner">
+      <span data-lang="en">Game Engagement Prioritisation Analytics</span>
+      <span data-lang="zh-CN">游戏参与度优先级分析</span>
+      <span><a href="https://github.com/chrisnch/game-engagement-prioritisation-analytics">GitHub repository</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll("[data-set-lang]");
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      buttons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.setLang === lang));
+      });
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.setLang));
+    });
+  </script>
+</body>
+</html>

@@ -4,9 +4,10 @@
 > 一个以证据为核心的产品分析 notebook，用于在分析资源有限时优先筛选高参与度游戏。
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook.ipynb)
+[![View Kanban / Report](https://img.shields.io/badge/View-Kanban%20%2F%20Report-D97757?style=flat&labelColor=191919)](https://chrisnch.github.io/game-engagement-prioritisation-analytics/)
 
 **GitHub 仓库:** https://github.com/chrisnch/game-engagement-prioritisation-analytics<br>
-**交互报告:** 使用 GitHub Pages 从仓库根目录发布 `index.html`。<br>
+**交互报告:** https://chrisnch.github.io/game-engagement-prioritisation-analytics/<br>
 **English version:** [README.md](README.md)
 
 ---

@@ -4,9 +4,10 @@
 > An evidence-led product analytics notebook for prioritising high-engagement games under limited review capacity.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook.ipynb)
+[![View Kanban / Report](https://img.shields.io/badge/View-Kanban%20%2F%20Report-D97757?style=flat&labelColor=191919)](https://chrisnch.github.io/game-engagement-prioritisation-analytics/)
 
 **Repository:** https://github.com/chrisnch/game-engagement-prioritisation-analytics<br>
-**Interactive report:** publish `index.html` with GitHub Pages from the repository root.<br>
+**Interactive report:** https://chrisnch.github.io/game-engagement-prioritisation-analytics/<br>
 **中文版本:** [README.zh-CN.md](README.zh-CN.md)
 
 ---

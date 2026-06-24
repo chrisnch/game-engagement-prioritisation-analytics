@@ -120,6 +120,8 @@ The notebook expects the submitted dataset at:
 data/raw/Ultimate_Games_Dataset.csv
 ```
 
+When opened directly in Colab from GitHub, the first cell clones this public repository if that relative data path is not already available in the runtime.
+
 ### Run Locally
 
 ```bash

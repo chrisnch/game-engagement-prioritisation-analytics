@@ -120,6 +120,8 @@ Notebook 需要提交数据位于：
 data/raw/Ultimate_Games_Dataset.csv
 ```
 
+如果直接从 GitHub 用 Colab 打开 notebook，而 runtime 中还没有这个相对数据路径，第一格会自动 clone 这个 public repository。
+
 ### 本地运行
 
 ```bash

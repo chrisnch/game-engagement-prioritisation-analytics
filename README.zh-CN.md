@@ -1,7 +1,7 @@
 # 游戏参与度优先级分析
 
-> **游戏工作室能否用可观察的市场元数据，判断哪些竞品游戏最值得优先人工研究？**<br>
-> 一个以证据为核心的产品分析 notebook，用于在分析资源有限时优先筛选高参与度游戏。
+> **游戏工作室能否用可观察的市场元数据，判断哪些市场参照游戏最值得优先人工研究？**<br>
+> 一个以证据为核心的产品分析 notebook，用于在分析资源有限时优先筛选高参与度代理案例。
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook_colab.ipynb)
 [![View Kanban / Report](https://img.shields.io/badge/View-Kanban%20%2F%20Report-D97757?style=flat&labelColor=191919)](https://chrisnch.github.io/game-engagement-prioritisation-analytics/)
@@ -10,13 +10,15 @@
 **交互报告:** https://chrisnch.github.io/game-engagement-prioritisation-analytics/<br>
 **English version:** [README.md](README.md)
 
+用于评估的提交 ZIP 是权威版本。GitHub 和 Colab 链接只作为紧急运行 fallback，不应替代提交文件。
+
 ---
 
 ## 项目价值
 
-独立游戏和 AA 游戏工作室不可能在做产品、平台和营销决策前深度研究所有竞品。更现实的问题是：有限的分析时间应该先花在哪些游戏上？
+独立游戏和 AA 游戏工作室不可能在做产品、平台和营销决策前深度研究所有市场参照游戏。更现实的问题是：有限的分析时间应该先花在哪些游戏上？
 
-本项目模拟这个决策支持场景。它使用一个包含 15,000 款游戏的市场快照，为人工竞品研究生成优先级排序。模型不被解释为自动预测成功的工具，而是一个筛选辅助：帮助分析师先看最值得看的游戏，同时避免把预测关系误解为因果关系、收入结论或用户偏好结论。
+本项目模拟这个决策支持场景。它使用一个包含 15,000 款游戏的市场快照，为人工市场参照研究生成优先级排序。模型不被解释为自动预测成功的工具，而是一个筛选辅助：帮助分析师先看最值得看的游戏，同时避免把预测关系误解为因果关系、收入结论或用户偏好结论。
 
 **核心问题:** 哪些可观察因素与前 25% 的玩家参与度相关？工作室如何把这些因素作为筛选信号，而不把预测误读成因果？
 
@@ -24,7 +26,7 @@
 
 ## 关键结果
 
-在固定 **600 款游戏** 的人工审核队列中，随机筛选预计能找到约 **150** 款高参与度游戏。最终机器学习模型找到 **413** 款，比随机多找到 **263** 款，同时把无效审核负担从 **450** 款降到 **187** 款。
+在说明性的固定容量 **600 款游戏** 留出集模拟中，随机筛选预计能捕捉约 **150** 个高参与度代理案例。最终机器学习模型捕捉 **413** 个，比随机多 **263** 个，同时把无效审核负担从 **450** 个降到 **187** 个。
 
 <p align="center">
   <img src="figures/decision_simulation_bar_chart.png" width="88%" alt="随机筛选、启发式筛选和最终机器学习筛选的决策模拟对比">
@@ -57,7 +59,7 @@
 
 ### 模型表现
 
-最终选择的模型是 `RandomForest_flexible`。在锁定留出集上的表现为：
+最终选择的模型是 `RandomForest_flexible`，并与随机筛选和简单元数据启发式规则比较。在锁定留出集上的表现为：
 
 | 指标 | 数值 |
 |---|---:|
@@ -77,7 +79,7 @@
 
 最重要的商业结果不是单一分类指标，而是审核队列 lift：
 
-| 审核组 | 审核游戏数 | 找到的高参与度游戏数 | Precision | 相对随机提升 |
+| 审核组 | 审核游戏数 | 捕捉的高参与度代理案例数 | Precision | 相对随机提升 |
 |---|---:|---:|---:|---:|
 | 预测前 10% | 300 | 256 | 0.853 | 3.41x |
 | 预测前 20% | 600 | 413 | 0.688 | 2.75x |
@@ -131,6 +133,8 @@ python3 -m venv .venv
 pip install -r requirements.txt
 jupyter lab notebooks/final_notebook.ipynb
 ```
+
+包版本以最低兼容版本声明。Notebook 使用提交环境开发和测试。
 
 运行 notebook 会重新生成 `figures/` 和 `outputs/`。提交前应检查这些文件的 diff。
 

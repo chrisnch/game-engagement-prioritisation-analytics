@@ -1,7 +1,7 @@
 # Game Engagement Prioritisation Analytics
 
-> **Can a game studio use observable market metadata to decide which comparable games deserve analyst review first?**<br>
-> An evidence-led product analytics notebook for prioritising high-engagement games under limited review capacity.
+> **Can a game studio use observable market metadata to decide which market-reference games deserve analyst review first?**<br>
+> An evidence-led product analytics notebook for prioritising high-engagement-proxy cases under limited review capacity.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook_colab.ipynb)
 [![View Kanban / Report](https://img.shields.io/badge/View-Kanban%20%2F%20Report-D97757?style=flat&labelColor=191919)](https://chrisnch.github.io/game-engagement-prioritisation-analytics/)
@@ -10,13 +10,15 @@
 **Interactive report:** https://chrisnch.github.io/game-engagement-prioritisation-analytics/<br>
 **中文版本:** [README.zh-CN.md](README.zh-CN.md)
 
+The submitted ZIP is the authoritative version for assessment. The GitHub and Colab links are provided only as emergency execution fallbacks and should not replace the submitted files.
+
 ---
 
 ## Why This Project Matters
 
-Indie and AA game studios cannot deeply review every comparable title before making product, platform and marketing decisions. They need a defensible way to focus scarce analyst time on the games most likely to reveal useful engagement patterns.
+Indie and AA game studios cannot deeply review every market-reference title before making product, platform and marketing decisions. They need a defensible way to focus scarce analyst time on the games most likely to reveal useful engagement patterns.
 
-This project simulates that decision-support problem. It uses a 15,000-game market snapshot to rank games for human comparable-game review. The model is not treated as an automatic success predictor. It is a screening aid that helps analysts decide where to look first, while keeping causality, revenue and audience-fit claims outside the model boundary.
+This project simulates that decision-support problem. It uses a 15,000-game market snapshot to rank games for human market-reference review. The model is not treated as an automatic success predictor. It is a screening aid that helps analysts decide where to look first, while keeping causality, revenue and audience-fit claims outside the model boundary.
 
 **Core question:** Which observable factors are associated with top-quartile player engagement, and how can a studio use those factors as screening signals without confusing prediction with causation?
 
@@ -24,7 +26,7 @@ This project simulates that decision-support problem. It uses a 15,000-game mark
 
 ## Key Result
 
-In a fixed **600-game review queue**, random screening would identify about **150** high-engagement games. The final machine-learning model identifies **413**, adding **263** more useful review candidates while reducing the false review burden from **450** to **187** games.
+In an illustrative fixed-capacity **600-game holdout simulation**, random screening would capture about **150** high-engagement-proxy cases. The final machine-learning model captures **413**, adding **263** more useful review candidates while reducing the false review burden from **450** to **187** cases.
 
 <p align="center">
   <img src="figures/decision_simulation_bar_chart.png" width="88%" alt="Decision simulation comparing random screening, heuristic screening and final ML screening">
@@ -57,7 +59,7 @@ The result supports a practical workflow: use the model to prioritise review, th
 
 ### Model Performance
 
-The selected model is `RandomForest_flexible`. On the locked holdout set it reaches:
+The selected model is `RandomForest_flexible`, evaluated against random screening and a simple metadata heuristic. On the locked holdout set it reaches:
 
 | Metric | Value |
 |---|---:|
@@ -77,7 +79,7 @@ The selected model is `RandomForest_flexible`. On the locked holdout set it reac
 
 The strongest business result is not the aggregate classifier score. It is the review-queue lift:
 
-| Review group | Games reviewed | High-engagement games found | Precision | Lift vs random |
+| Review group | Games reviewed | High-engagement-proxy cases captured | Precision | Lift vs random |
 |---|---:|---:|---:|---:|
 | Top 10% predicted | 300 | 256 | 0.853 | 3.41x |
 | Top 20% predicted | 600 | 413 | 0.688 | 2.75x |
@@ -131,6 +133,8 @@ python3 -m venv .venv
 pip install -r requirements.txt
 jupyter lab notebooks/final_notebook.ipynb
 ```
+
+Package versions are specified as minimum compatible versions. The notebook was developed and tested using the submitted environment.
 
 Running the notebook regenerates `figures/` and `outputs/`. Review those diffs before committing.
 

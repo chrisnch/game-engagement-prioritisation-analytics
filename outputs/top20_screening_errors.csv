@@ -1,20 +1,20 @@
 source_index,title,release_year,all_genres,all_platforms,available_stores,platform_count,game_series_count,engagement_score,actual_high_engagement,model_priority_score,selected_for_review,error_type
-2934,WipEout HD,2008.0,Action|Racing|Arcade,PlayStation 3,PlayStation Store,1.0,8.0,3.02,0,0.9185042499300166,True,false_review
-10386,Magna Carta,2004.0,RPG,PlayStation 2|PSP,Unknown,2.0,2.0,2.95,0,0.9022602660396677,True,false_review
-7728,SIREN,2004.0,Adventure,PlayStation 4|PlayStation 2,PlayStation Store,2.0,2.0,3.79,0,0.8953478352512763,True,false_review
+2934,WipEout HD,2008.0,Action|Racing|Arcade,PlayStation 3,PlayStation Store,1.0,8.0,3.02,0,0.9185042499300163,True,false_review
+10386,Magna Carta,2004.0,RPG,PlayStation 2|PSP,Unknown,2.0,2.0,2.95,0,0.9022602660396679,True,false_review
+7728,SIREN,2004.0,Adventure,PlayStation 4|PlayStation 2,PlayStation Store,2.0,2.0,3.79,0,0.895347835251276,True,false_review
 9596,Madden NFL 07,2006.0,Sports,Xbox|GameCube|Game Boy Advance|PlayStation 2|Wii|Xbox 360|PC,Nintendo Store|Xbox 360 Store,7.0,19.0,3.74,0,0.8887964520207506,True,false_review
-6295,Fist of The North Star: Lost Paradise,2018.0,Action|Adventure,PlayStation 4|PlayStation 5,PlayStation Store,2.0,12.0,2.71,0,0.8781484961711379,True,false_review
+6295,Fist of The North Star: Lost Paradise,2018.0,Action|Adventure,PlayStation 4|PlayStation 5,PlayStation Store,2.0,12.0,2.71,0,0.8781484961711378,True,false_review
 6135,Hard Corps: Uprising,2011.0,Action|Shooter|Arcade|Platformer,Xbox 360|PlayStation 3,PlayStation Store|Xbox 360 Store,2.0,11.0,2.38,0,0.8693011889338402,True,false_review
-12988,Sentimental Graffiti: Yakusoku,2001.0,Adventure|Simulation,Dreamcast|PlayStation,PlayStation Store,2.0,1.0,0.25,0,0.8618008123195975,True,false_review
-5392,Hydrophobia,2010.0,Action|Shooter|Adventure,Xbox 360,Xbox Store|Xbox 360 Store,1.0,1.0,3.05,0,0.8599957158326603,True,false_review
-5835,Madden NFL 17,2016.0,Sports,PlayStation 3|Xbox One|PlayStation 4|Xbox 360,PlayStation Store|Xbox 360 Store|Xbox Store,4.0,19.0,4.1,0,0.8462599873352907,True,false_review
+12988,Sentimental Graffiti: Yakusoku,2001.0,Adventure|Simulation,Dreamcast|PlayStation,PlayStation Store,2.0,1.0,0.25,0,0.8618008123195974,True,false_review
+5392,Hydrophobia,2010.0,Action|Shooter|Adventure,Xbox 360,Xbox Store|Xbox 360 Store,1.0,1.0,3.05,0,0.8599957158326604,True,false_review
+5835,Madden NFL 17,2016.0,Sports,PlayStation 3|Xbox One|PlayStation 4|Xbox 360,PlayStation Store|Xbox 360 Store|Xbox Store,4.0,19.0,4.1,0,0.8462599873352906,True,false_review
 2160,KILLER IS DEAD,2013.0,Action|Adventure,Xbox 360|PC|Xbox One|PlayStation 3,PlayStation Store|Xbox Store|Xbox 360 Store,4.0,0.0,3.92,0,0.8420983359691766,True,false_review
-4398,Pokémon GO,2016.0,RPG|Strategy,iOS|Android,Google Play|App Store,2.0,0.0,38.53,1,0.5102638901129096,False,missed_high_engagement
+4398,Pokémon GO,2016.0,RPG|Strategy,iOS|Android,Google Play|App Store,2.0,0.0,38.53,1,0.5102638901129095,False,missed_high_engagement
 7412,Dark Souls III: Ashes of Ariandel,2016.0,Action|RPG,PC|Xbox One|PlayStation 4,Steam,3.0,0.0,34.57,1,0.5372291426063639,False,missed_high_engagement
 13543,Schastye,2020.0,Indie,PC,Steam,1.0,0.0,33.59,1,0.45251392017926323,False,missed_high_engagement
 13194,Rebellion: The Beginning,2023.0,Adventure,Linux|macOS|PC,Steam,3.0,0.0,33.58,1,0.5676224744008711,False,missed_high_engagement
-11300,100 March Cats,2024.0,Adventure|Casual|Indie|Puzzle,PC,Steam,1.0,0.0,29.69,1,0.44107583720435706,False,missed_high_engagement
-11562,The Symbiant,2023.0,Simulation|Casual|Indie,PC|Linux|macOS,GOG|Steam,3.0,0.0,26.62,1,0.537069421579567,False,missed_high_engagement
+11300,100 March Cats,2024.0,Adventure|Casual|Indie|Puzzle,PC,Steam,1.0,0.0,29.69,1,0.441075837204357,False,missed_high_engagement
+11562,The Symbiant,2023.0,Simulation|Casual|Indie,PC|Linux|macOS,GOG|Steam,3.0,0.0,26.62,1,0.5370694215795669,False,missed_high_engagement
 13922,MWNeus,2024.0,Adventure|RPG|Casual|Indie,Linux|macOS|PC,Steam,3.0,0.0,25.25,1,0.5001528908215684,False,missed_high_engagement
 13669,Train Capacity 300%,2024.0,RPG|Strategy|Simulation|Casual|Indie,PC,Steam,1.0,0.0,25.25,1,0.39458222273802596,False,missed_high_engagement
 13747,Siberian Way,2025.0,Adventure|Indie,PC,Steam,1.0,0.0,25.25,1,0.5313560479400469,False,missed_high_engagement

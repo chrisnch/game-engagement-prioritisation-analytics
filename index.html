@@ -538,10 +538,10 @@
         <h1 id="hero-title" data-lang="en">Which games should analysts review first?</h1>
         <h1 id="hero-title-zh" data-lang="zh-CN">分析师应该先研究哪些游戏？</h1>
         <p class="lead" data-lang="en">
-          This project ranks comparable games for scarce analyst review time. It uses observable metadata to identify high-engagement candidates, then keeps final product judgement with humans.
+          This project ranks market-reference games for scarce analyst review time. It uses observable metadata to identify high-engagement-proxy cases, then keeps final product judgement with humans.
         </p>
         <p class="lead" data-lang="zh-CN">
-          本项目为有限的竞品研究时间生成审核优先级。它使用可观察元数据识别高参与度候选游戏，但最终产品判断仍由人完成。
+          本项目为有限的市场参照研究时间生成审核优先级。它使用可观察元数据识别高参与度代理案例，但最终产品判断仍由人完成。
         </p>
         <div class="hero-actions">
           <a class="button" href="https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook_colab.ipynb">Open in Colab</a>
@@ -552,14 +552,14 @@
       <aside class="hero-aside" aria-label="Main result">
         <div>
           <div class="number">413</div>
-          <p class="caption" data-lang="en">high-engagement games found in a 600-game model-prioritised review queue</p>
-          <p class="caption" data-lang="zh-CN">在 600 款模型优先审核队列中找到的高参与度游戏数</p>
+          <p class="caption" data-lang="en">high-engagement-proxy cases captured in a 600-game holdout simulation</p>
+          <p class="caption" data-lang="zh-CN">在 600 款留出集模拟中捕捉的高参与度代理案例数</p>
         </div>
         <p class="muted" data-lang="en">
-          Random screening would find about 150. The final model finds 263 more useful review candidates.
+          Random screening would capture about 150. The final model captures 263 more useful review candidates.
         </p>
         <p class="muted" data-lang="zh-CN">
-          随机筛选预计只能找到约 150 款。最终模型多找到 263 款值得人工研究的候选游戏。
+          随机筛选预计只能捕捉约 150 个。最终模型多捕捉 263 个值得人工研究的候选案例。
         </p>
       </aside>
     </section>
@@ -692,17 +692,17 @@
           <h2 id="evidence-heading" data-lang="en">Visual Evidence</h2>
           <h2 id="evidence-heading-zh" data-lang="zh-CN">关键可视化</h2>
           <p data-lang="en">
-            The charts show why the project is useful as a prioritisation system: it captures more high-engagement games in the same analyst queue.
+            The charts show why the project is useful as a prioritisation system: it captures more high-engagement-proxy cases in the same analyst queue.
           </p>
           <p data-lang="zh-CN">
-            这些图表展示项目为何适合做优先级系统：在同样的人工审核容量下，它能捕捉更多高参与度游戏。
+            这些图表展示项目为何适合做优先级系统：在同样的人工审核容量下，它能捕捉更多高参与度代理案例。
           </p>
         </div>
         <div class="figure-grid">
           <figure class="figure-panel wide">
             <img src="figures/decision_simulation_bar_chart.png" alt="Decision simulation bar chart">
-            <figcaption data-lang="en">Decision simulation: the final ML model finds 413 high-engagement games in a 600-game review queue, compared with 150 for random screening.</figcaption>
-            <figcaption data-lang="zh-CN">决策模拟：在 600 款审核队列中，最终机器学习模型找到 413 款高参与度游戏，随机筛选约为 150 款。</figcaption>
+            <figcaption data-lang="en">Decision simulation: the final ML model captures 413 high-engagement-proxy cases in a 600-game holdout simulation, compared with 150 for random screening.</figcaption>
+            <figcaption data-lang="zh-CN">决策模拟：在 600 款留出集模拟中，最终机器学习模型捕捉 413 个高参与度代理案例，随机筛选约为 150 个。</figcaption>
           </figure>
           <figure class="figure-panel">
             <img src="figures/review_queue_outcomes.png" alt="Review queue outcomes by priority band">

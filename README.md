@@ -3,7 +3,7 @@
 > **Can a game studio use observable market metadata to decide which comparable games deserve analyst review first?**<br>
 > An evidence-led product analytics notebook for prioritising high-engagement games under limited review capacity.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook_colab.ipynb)
 [![View Kanban / Report](https://img.shields.io/badge/View-Kanban%20%2F%20Report-D97757?style=flat&labelColor=191919)](https://chrisnch.github.io/game-engagement-prioritisation-analytics/)
 
 **Repository:** https://github.com/chrisnch/game-engagement-prioritisation-analytics<br>
@@ -112,7 +112,7 @@ The supplied `engagement_score` is an opaque proxy in the local dataset. Its for
 Use the Colab badge at the top of this README. If Colab cannot locate the repository automatically, open:
 
 ```text
-https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook.ipynb
+https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook_colab.ipynb
 ```
 
 The notebook expects the submitted dataset at:
@@ -121,7 +121,7 @@ The notebook expects the submitted dataset at:
 data/raw/Ultimate_Games_Dataset.csv
 ```
 
-When opened directly in Colab from GitHub, the first cell clones this public repository if that relative data path is not already available in the runtime.
+When opened directly in Colab from GitHub, the Colab notebook installs the declared runtime requirements and clones this public repository if that relative data path is not already available in the runtime.
 
 ### Run Locally
 
@@ -161,13 +161,14 @@ Before making this repository public or redistributing the final zip, re-check t
 ├── README.zh-CN.md                       Simplified Chinese overview
 ├── index.html                            Bilingual GitHub Pages report
 ├── notebooks/
-│   └── final_notebook.ipynb              Canonical analysis workflow
+│   ├── final_notebook.ipynb              Canonical analysis workflow
+│   └── final_notebook_colab.ipynb        Colab launcher with requirements install
 ├── data/raw/
 │   └── Ultimate_Games_Dataset.csv        Submitted raw Kaggle dataset
 ├── outputs/                              Canonical CSV evidence tables
 ├── figures/                              Generated visual outputs
 ├── report/
-│   └── final_business_report.pdf         Business-facing PDF report
+│   └── final_business_report.md          Business-facing Markdown report
 └── requirements.txt                      Runtime dependencies
 ```
 

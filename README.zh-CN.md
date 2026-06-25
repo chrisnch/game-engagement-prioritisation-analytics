@@ -3,7 +3,7 @@
 > **游戏工作室能否用可观察的市场元数据，判断哪些竞品游戏最值得优先人工研究？**<br>
 > 一个以证据为核心的产品分析 notebook，用于在分析资源有限时优先筛选高参与度游戏。
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook_colab.ipynb)
 [![View Kanban / Report](https://img.shields.io/badge/View-Kanban%20%2F%20Report-D97757?style=flat&labelColor=191919)](https://chrisnch.github.io/game-engagement-prioritisation-analytics/)
 
 **GitHub 仓库:** https://github.com/chrisnch/game-engagement-prioritisation-analytics<br>
@@ -112,7 +112,7 @@
 点击 README 顶部的 Colab badge。如果 Colab 没有自动找到仓库，可以打开：
 
 ```text
-https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook.ipynb
+https://colab.research.google.com/github/chrisnch/game-engagement-prioritisation-analytics/blob/main/notebooks/final_notebook_colab.ipynb
 ```
 
 Notebook 需要提交数据位于：
@@ -121,7 +121,7 @@ Notebook 需要提交数据位于：
 data/raw/Ultimate_Games_Dataset.csv
 ```
 
-如果直接从 GitHub 用 Colab 打开 notebook，而 runtime 中还没有这个相对数据路径，第一格会自动 clone 这个 public repository。
+如果直接从 GitHub 用 Colab 打开 notebook，Colab 版 notebook 会先安装声明的 runtime requirements；如果 runtime 中还没有这个相对数据路径，第一格会自动 clone 这个 public repository。
 
 ### 本地运行
 
@@ -161,13 +161,14 @@ data/raw/Ultimate_Games_Dataset.csv
 ├── README.zh-CN.md                       简体中文项目说明
 ├── index.html                            双语 GitHub Pages 报告
 ├── notebooks/
-│   └── final_notebook.ipynb              标准分析 notebook
+│   ├── final_notebook.ipynb              标准分析 notebook
+│   └── final_notebook_colab.ipynb        带 requirements 安装的 Colab 入口
 ├── data/raw/
 │   └── Ultimate_Games_Dataset.csv        提交用 Kaggle 原始数据
 ├── outputs/                              标准 CSV 证据表
 ├── figures/                              生成的可视化图表
 ├── report/
-│   └── final_business_report.pdf         面向业务读者的 PDF 报告
+│   └── final_business_report.md          面向业务读者的 Markdown 报告
 └── requirements.txt                      运行依赖
 ```
 

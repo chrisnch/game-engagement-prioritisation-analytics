@@ -5,3 +5,6 @@
 __pycache__/
 *.py[cod]
 *.log
+AGENTS.md
+fallback.zip
+game-engagement-prioritisation-analytics-submission/
